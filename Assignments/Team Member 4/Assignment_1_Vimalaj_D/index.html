@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Resume Template</title>
+
+    <!-- Google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=poppins:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.js" ></script>
+  <script>
+  function generate() {
+    var element = document.getElementById('element-to-print');
+    html2pdf(element);
+  }
+  </script>
+</head>
+<body>
+    <main id="element-to-print" class="resume-contents">
+        <section class="left-section">
+            <div class="left-section-contents">
+                <div class="profile">
+                    <img class="profile-image" src="img/profile-image.jpg" alt="Profile image">
+                    <p class="name">VIMALRAJ D</p>
+                    <p class="profession">Software Engineer</p>
+					<div class="container">
+					<div class="center">
+					<button class="button button1" onclick="generate()" >Download CV</button>
+					<a href="form.html" class="button button2">Hire me </a>
+					</div>
+					</div></p>
+
+                </div>
+                <div class="contact-info">
+                    <p class="left-title">Contact Info</p>
+                    <ul>
+                        <li><i class="fa fa-phone"></i>+91 7094069469
+                        </li>
+                        <li><i class="fa fa-envelope"></i>2k19cse117@kiot.ac.in
+                        </li>
+                        <li><i class="fa fa-map-marker"></i>Salem,India
+                        </li>
+                    </ul>
+                </div>
+                <div class="skills">
+                    <p class="left-title">Skills</p>
+                    <ul>
+                        <li><p>C</p></li>
+                        <li><p>Java</p></li>
+                        <li><p>Python</p></li>
+                        <li><p>HTML5</p></li>
+                        <li><p>CSS3</p></li>
+                        <li><p>SQL</p></li>
+                      
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="right-section">
+            <div class="right-section-contents">
+                <section class="about gap">
+                    <div class="right-title">Profile</div>
+                    <p class="about-me-contents">
+                        To pursue a challenging career by solving real time issues and to keep myself updated with latest technologies along with the organization goals
+and objectives.
+                    </p>
+                </section>
+
+                <section class="experience gap">
+                    <div class="right-title">Education</div>
+                    <div class="experience-contents">
+                        <div class="exp-left">
+                            <p class="exp-company-name">secondary school</p>
+                            <p class="exp-time-period">Swamy Vivekanandar Matric Higher Secondary School</p>
+							<p class="exp-percentage"></p>
+                        </div>
+                        <div class="exp-right">
+                            <p class="exp-position">93.02%</p>
+                            <p class="exp-desc">
+                             2016-2017
+                            </p>
+                        </div>
+                    </div>
+                    <div class="experience-contents">
+                        <div class="exp-left">
+                            <p class="exp-company-name">higher secondary school</p>
+                            <p class="exp-time-period">Swamy Vivekanandar Matric Higher Secondary School</p>
+                        </div>
+                        <div class="exp-right">
+                            <p class="exp-position">86.33%</p>
+                            <p class="exp-desc">
+                                2017-2019
+                            </p>
+                        </div>
+                    </div>
+                    <div class="experience-contents">
+                        <div class="exp-left">
+                            <p class="exp-company-name">Bachelor of Engineering</p>
+                            <p class="exp-time-period">knowledge Institute Of Technology</p>
+                        </div>
+                        <div class="exp-right">
+                            <p class="exp-position">85.05%</p>
+                            <p class="exp-desc">
+                                2019-2023
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="education gap">
+                    <div class="right-title">extra curricular</div>
+                    <div class="education-contents">
+                        <div class="education-left">
+                            <p class="education-school-name">internship</p>
+                            <p class="educationp-time-period">June 2021-October 2021</p>
+                        </div>
+                        <div class="education-right">
+                            <p class="education-subject">cisco cybersecurity </p>
+                            <p class="education-desc">
+                                Created a " Secured Network for my College" By using Packet Tracer Software.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="education-contents">
+                        <div class="education-left">
+                            <p class="education-school-name">presentation</p>
+                            <p class="educationp-time-period">April 2021</p>
+                        </div>
+                        <div class="education-right">
+                            <p class="education-subject">Python programming</p>
+                            <p class="education-desc">
+                                Presented a paper in my college on the topic "Python Programming "in the first semester.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="education-contents">
+                        <div class="education-left">
+                            <p class="education-school-name">contest</p>
+                            <p class="educationp-time-period">March 2021</p>
+                        </div>
+                        <div class="education-right">
+                            <p class="education-subject">E-BOX TOP CODERS & TOP DESIGNERS</p>
+                            <p class="education-desc">
+                                 Contest based on application development using java/python held at Vidhya Vikas engineering college,Thiruchengode.
+
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
