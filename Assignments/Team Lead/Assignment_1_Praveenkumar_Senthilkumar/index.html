@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 Resume</title>
+
+    <!-- Google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.js" ></script>
+	<script>
+	function generate() {
+		var element = document.getElementById('element-to-print');
+		html2pdf(element);
+	}
+	</script>
+</head>
+<body>
+    <main class="resume-contents" id="element-to-print">
+        
+		<!-- Resume starts here -->
+		<section class="left-section">
+			
+			<button onclick="generate()" id="download" class="dbutton" type="button">
+				<i class="fa fa-download" aria-hidden="true"> Download</i>
+			</button>	
+			
+            <div class="left-section-contents">
+                
+				<!-- Profile -->
+				<div class="profile">
+                    <img class="profile-image" src="profile.jpg" alt="Profile image">
+                    <p class="name">Praveenkumar Senthilkumar</p>
+                    <p class="profession">Software Engineer</p>
+					<div class="hbox">
+						<div class="hire">
+						<a href="form.html" class="button" style="vertical-align:middle">
+							<span>Hire Him </span>
+						</a>
+						</div>
+					</div>
+                </div>
+				
+				<!-- Contact Info -->
+                <div class="contact-info">
+                    <p class="left-title">Contact Info</p>
+                    <ul>
+                        <li><i class="fa fa-phone"></i>+91 9788582343
+                        </li>
+                        <li><i class="fa fa-envelope"></i>2k19cse069@kiot.ac.in
+                        </li>
+                        <li><i class="fa fa-map-marker"></i>Salem, India
+                        </li>
+                    </ul>
+                </div>
+				
+				<!-- Skills -->
+                <div class="skills">
+                    <p class="left-title">Skills</p>
+                    <ul>
+                        <li><p>Python3, Flask</p></li>
+                        <li><p>C, Java</p></li>
+                        <li><p>JavaScript, React</p></li>
+                        <li><p>HTML5 & CSS3</p></li>
+                        <li><p>SQL, MySql</p></li>
+                    </ul>
+                </div>
+
+                
+            </div>
+			
+        </section>
+
+
+        <section class="right-section">
+		
+            <div class="right-section-contents">
+				
+				<!-- Objective -->
+                <section class="about gap">
+                    <div class="right-title">Objective</div>
+                    <p class="about-me-contents">
+                        To apply a role which allows me to learn about new technology by getting 
+						involved in challenging work environment and 
+						utilize them for personal and organizational growth to the best of my ability.
+                    </p>
+                </section>
+				
+				<!-- Internships -->
+                <section class="experience gap">
+                    <div class="right-title">Internships</div>
+                    <div class="experience-contents">
+                        <div class="exp-left">
+                            <p class="exp-company-name">The Spark Foundation</p>
+                            <p class="exp-time-period">2021-2022</p>
+                        </div>
+                        <div class="exp-right">
+                            <p class="exp-position">Web Development Intern</p>
+                            <p class="exp-desc">
+                                Need to develop a web application 
+								for ten customers to transact the money with each other.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="experience-contents">
+                        <div class="exp-left">
+                            <p class="exp-company-name">Zoho Corporation</p>
+                            <p class="exp-time-period">2021-2022</p>
+                        </div>
+                        <div class="exp-right">
+                            <p class="exp-position">Summer Intern</p>
+                            <p class="exp-desc">
+                                solved various problems and learned new web technologies.
+                            </p>
+                        </div>
+                </section>
+
+				<!-- Education -->
+                <section class="education gap">
+                    <div class="right-title">Education</div>
+                    <div class="education-contents">
+                        <div class="education-left">
+                            <p class="education-school-name">Knowledge Institute Of Technology</p>
+                            <p class="educationp-time-period">2019-2023</p>
+                        </div>
+                        <div class="education-right">
+                            <p class="education-subject">Computer Science and Engineering</p>
+                            <p class="education-desc">
+                                87%
+                            </p>
+                        </div>
+                    </div>
+                    <div class="education-contents">
+                        <div class="education-left">
+                            <p class="education-school-name">Holy Cross Matric School</p>
+                            <p class="educationp-time-period">2017-2019</p>
+                        </div>
+                        <div class="education-right">
+                            <p class="education-subject">Higher Secondary</p>
+                            <p class="education-desc">
+                                65.33%
+                            </p>
+                        </div>
+                    </div>
+                    <div class="education-contents">
+                        <div class="education-left">
+                            <p class="education-school-name">The Gugai Hr Sec School</p>
+                            <p class="educationp-time-period">2016-2017</p>
+                        </div>
+                        <div class="education-right">
+                            <p class="education-subject">Secondary School</p>
+                            <p class="education-desc">
+                               87%
+                            </p>
+                        </div>
+                    </div>
+                </section>
+				
+            </div>
+
+        </section>
+		
+		
+    </main>
+	
+</body>
+</html>
