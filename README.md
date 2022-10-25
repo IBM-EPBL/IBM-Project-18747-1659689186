@@ -1,20 +1,3 @@
-<<<<<<< Updated upstream
-# **Nalaiya Thiran**
-
-INVENTORY MANAGEMENT SYSTEM FOR RETAILERS
-
-TeamID: PNT2022TMID30176
-
-## **👩‍👦 TEAM MEMBERS**
-
-```html
- Praveenkumar Senthilkumar
- Priyaranjan K
- Veerammal S
- Venkatesh Kumar B
- Vimalraj D
-```
-=======
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg)
 
                               INVENTORY MANAGEMENT SYSTEM FOR RETAILERS
@@ -36,7 +19,6 @@ TeamID: PNT2022TMID30176
 - Venkatesh Kumar B    
 
 
->>>>>>> Stashed changes
 
 ## **📜 PROJECT DESCRIPTION:**
 
@@ -46,10 +28,6 @@ In practice, effective retail inventory management results in lower costs and a 
 
 Once retailers successfully log in to the application they can update their inventory details, also users will be able to add new stock by submitting essential details related to the stock. They can view details of the current inventory. The System will automatically send an email alert to the retailers if there is no stock found in their accounts.  So that they can order new stock.
 
-<<<<<<< Updated upstream
-## **🎯 Skills Required:**
-=======
->>>>>>> Stashed changes
 
 ## 🈸 **SKILLS REQUIRED**
 |    |   |   |
