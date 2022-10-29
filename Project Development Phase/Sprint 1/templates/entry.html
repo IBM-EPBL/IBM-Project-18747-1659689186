@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/External.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/entry.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
     <title>signin-signup</title>
 </head>
 
 <body>
     <div class="container">
         <div class="signin-signup">
-            <form action="" class="sign-in-form">
+            <form action="/" class="sign-in-form">
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
@@ -21,7 +23,12 @@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password">
+                    <input type="password" id="password" placeholder="Password">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <div class="forgot-field">
+                    <a href="#">Forgot password?</a>
+                    
                 </div>
                 <input type="submit" value="Login" class="btn">
                 <p class="social-text">Or Sign in with social platform</p>
@@ -30,12 +37,12 @@
                         <i class="fab fa-facebook"></i>
                     </a>
                    
-                    <a href="" class="social-icon">
+                    <a href="{{ url_for('google_login') }}" class="social-icon">
                         <i class="fab fa-google"></i>
                     </a>
                     
                 </div>
-                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+                <p class="account-text">Dont have an account? <a href="{{ url_for('google_login') }}" id="sign-up-btn2">Sign up</a></p>
             </form>
             <form action="" class="sign-up-form">
                 <h2 class="title">Sign up</h2>
@@ -61,11 +68,11 @@
                     <a href="#" class="social-icon">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="" class="social-icon">
+                    <a href="{{ url_for('google_login') }}" class="social-icon">
                         <i class="fab fa-google"></i>
                     </a>
                 </div>
-                <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">Sign in</a></p>
+                <p class="account-text">Already have an account? <a href="{{ url_for('google_login') }}" id="sign-in-btn2">Sign in</a></p>
             </form>
         </div>
         <div class="panels-container">

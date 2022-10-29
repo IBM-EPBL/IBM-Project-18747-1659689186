@@ -1,177 +1,116 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Meta Informations -->
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <!-- CSS Files -->
-    <link
-      https="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      ref="stylesheet"
-      type="text/css"
-    />
-    <link
-      https="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
-      ref="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="{{ url_for('static', filename='css/style.css') }}"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <!-- JS Files -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-  </head>
 
-  <body>
-    <!-- Navbar -->
+<head>
+  <title>
+    {% block title%}
+    {% endblock %}
+  </title>
+  {% block head %}
+  <!-- Meta Informations -->
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <!-- CSS Files -->
+  <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet" type="text/css" />
+  <!-- JS Files -->
+  <script src="https://kit.fontawesome.com/3830746d6e.js"></script>
+  <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+  {% endblock %}
+</head>
 
-    <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <!-- Mobile view -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars text-white"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
-        <ul class="navbar-nav ml-auto">
-          <div class="hori-selector">
-            <div class="left"></div>
-            <div class="right"></div>
-          </div>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"
-              ><i class="fas fa-tachometer-alt"></i>Dashboard</a
-            >
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="javascript:void(0);"
-              ><i class="far fa-address-book"></i>People</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"
-              ><i class="far fa-clone"></i>Product</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"
-              ><i class="far fa-chart-bar"></i>Report</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);"
-              ><i class="far fa-bell"></i
-            ></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0);">
-              <i class="fas fa-expand-alt"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Navbar ends -->
-
-    <!-- footer starts -->
-    <footer class="footer-section">
-      <div class="container">
-        <div class="footer-cta pt-5 pb-5">
-          <div class="row">
-            <div class="col-xl-4 col-md-4 mb-30">
-              <div class="single-cta">
-                <i class="fas fa-video"></i>
-                <div class="cta-text">
-                  <h4>DemoVideo</h4>
-                  <span>For the demo Click here!</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-4 mb-30">
-              <div class="single-cta">
-                <i class="fab fa-github"></i>
-                <div class="cta-text">
-                  <h4>Github</h4>
-                  <span>For reference see here</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-md-4 mb-30">
-              <div class="single-cta">
-                <i class="far fa-envelope-open"></i>
-                <div class="cta-text">
-                  <h4>Mail us</h4>
-                  <span>mail@info.com</span>
-                </div>
-              </div>
-            </div>
+<body>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <span><b>IMS</b></span>
+    <ul id="nav-items">
+      <li class="nav-item" id="dashboard">
+        <i class="fa-solid fa-gauge"></i>
+        &nbsp;&nbsp;Dashboard
+      </li>
+      <li class="nav-item" id="products">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        &nbsp;&nbsp;Products
+      </li>
+      <li class="nav-item" id="people">
+        <i class="fa-solid fa-people-group"></i>
+        &nbsp;&nbsp;People
+      </li>
+      <li class="nav-item" id="bell">
+        <i class="fa-solid fa-bell"></i>
+        <span id="badge">0</span>
+      </li>
+      <li class="nav-item">
+        <i class="fa-solid fa-expand"></i>
+      </li>
+      <a href="/entry">
+        <li class="nav-item">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </li>
+      </a>
+    </ul>
+  </nav>
+  <!-- Navbar ends -->
+{% block content %}
+{% endblock %}
+  <!-- Footer -->
+  <footer>
+    <!-- Footer Content -->
+    <div id="footer-content">
+      <!-- Left part -->
+      <div id="footer-left">
+        
+        <div class="footer-card">
+          <i class="fas fa-video"></i>
+          <div>
+            <h4>DemoVideo</h4>
+            <span>For the demo Click here!</span>
           </div>
         </div>
-        <div class="footer-content pt-5 pb-5">
-          <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
-              <div class="footer-widget">
-                <div class="footer-widget-heading">
-                  <h3>ReachUs</h3>
-                </div>
-                <div class="footer-text mb-25">
-                  <p>For more details send your email</p>
-                </div>
-                <div class="subscribe-form">
-                  <form action="#">
-                    <input type="text" placeholder="Email Address" />
-                    <button><i class="fab fa-telegram-plane"></i></button>
-                  </form>
-                </div>
-              </div>
-            </div>
+
+        <div class="footer-card">
+          <i class="fab fa-github"></i>
+          <div>
+            <h4>Github</h4>
+            <span>For reference see here</span>
           </div>
         </div>
-      </div>
-      <div class="copyright-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-              <div class="copyright-text">
-                <p>
-                  Copyright &copy; 2022, All Right Reserved
-                  <a href="#">TEAM28</a>
-                </p>
-              </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-              <div class="footer-menu">
-                <div class="footer-social-icon">
-                  <a href="#"><i class="fab fa-github github-bg"></i></a>
-                  <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
-                </div>
-              </div>
-            </div>
+
+        <div class="footer-card">
+          <i class="fa-solid fa-address-card"></i>
+          <div>
+            <h4>About us</h4>
+            <span>For more Informations Click here</span>
           </div>
         </div>
+
       </div>
-    </footer>
-    <!-- footer ends -->
-  </body>
+      <!-- Left part ends -->
+       <!-- Right part - Reachus form -->
+      <div id="footer-right">
+        <div>
+          <h3>ReachUs</h3>
+          <span>For more details send your email</span>
+        </div>
+        <div id="reachus-form">
+          <form action="#" id="reachus-form-input">
+            
+            <input type="text" placeholder="Email Address" />
+            <button><i class="fa-sharp fa-solid fa-paper-plane"></i></button>
+           
+          </form>
+        </div>
+      </div>
+      <!-- Right part - Reachus Form ends -->
+    </div>
+    <!-- Footer Content ends -->
+    
+    <span id="footer-copyright">
+      All &copy; copyrights are reserved.
+    </span>
+
+  </footer>
+  <!-- Footer ends -->
+</body>
+
 </html>

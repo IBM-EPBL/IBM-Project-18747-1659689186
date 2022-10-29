@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: bisque;
+}
+
+/* Navbar */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px 0px 10px;
+    background-color: beige;
+    border-radius: 0px 0px 20px 20px;
+}
+
+#navbar span {
+    flex: 1;
+    display: flex;
+}
+
+#navbar span b {
+    align-self: center;
+    padding: 0px 20px;
+}
+
+#nav-items {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    flex: 2;
+}
+
+#nav-items li {
+    padding: 10px;
+    margin: 0px 20px;
+}
+
+#nav-items li:hover,
+.active {
+    background-color: bisque;
+    border-radius: 15px 15px 0px 0px;
+}
+
+#nav-items a {
+    color: inherit;
+}
+#bell {
+    position: relative;
+}
+
+#badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    border-radius: 50%;
+}
+/* Navbar ends */
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    padding: 20px;
+    background-color:aliceblue;
+    border-radius: 30px 30px 0px 0px;
+}
+
+#footer-content {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-left {
+    flex: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.footer-card i {
+    font-size: 28px;
+}
+
+.footer-card div {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reachus-form-input {
+    margin: 10px;
+    display: inline;
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 20px;
+   
+}
+
+#reachus-form-input input, #reachus-form-input button {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: transparent;
+}
+
+
+
+#footer-copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+/* Footer ends */
