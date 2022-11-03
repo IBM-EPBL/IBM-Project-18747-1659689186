@@ -59,11 +59,13 @@ Once retailers successfully log in to the application they can update their inve
   - Planning Phase 
     - [x] Milestone and Activity List
     - [x] Sprint Delivery plan
-
+- Project Development Phase
+    - Sprint 1
 # **📋ASSIGNMENT COMPLETED:**
   - [x] Assignment 1  
   - [x] Assignment 2  
   - [x] Assignment 3  
+  - [x] Assignment 4
   
 ## **🔗LINK**
 
