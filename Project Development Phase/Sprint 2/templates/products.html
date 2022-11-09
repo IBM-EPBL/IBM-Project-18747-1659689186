@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+<!-- Title -->
+{% block title %} Products {% endblock %}
+
+<!-- CSS and JS Links -->
+{% block links %}
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<h1>Products Page</h1>
+<p>Add your products in Products Page.</p>
+<i class="fa-solid fa-circle-plus" id="myBtn">PRODUCT</i>
+<br>
+{% for product in productlist %}
+<div>
+  <p>{{product['ID']}}</p>
+  <p>{{product['NAME']}}</p>
+  <p>{{product['CATEGORY']}}</p>
+  <p>{{product['BRAND']}}</p>
+  <p>{{product['DESCRIPTION']}}</p>
+  <p>{{product['PRICE']}}</p>
+  <p>{{product['COUNT']}}</p>
+  <hr>
+  <br>
+</div>
+<br>
+{% endfor %}
+<!-- Model -->
+<div id="myModal" class="modal">`
+  <!-- Model content  -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="pform">
+      <div class="msg">{{msg}}</div>
+      <form action="/addproducts" method="POST">
+        <br />
+        <label for="id">ProductId:</label><br />
+        <input type="number" name="id" /><br />
+        <label for="name">Product Name:</label><br />
+        <input type="text" name="name" /><br />
+        <label for="category">Category</label><br />
+        <input type="text" name="category" /><br />
+        <label for="brand">Brand</label><br />
+        <input type="text" name="brand" /><br />
+        <label for="description">Description</label><br />
+        <input type="text" name="description" /><br />
+        <label for="price">Price</label><br />
+        <input type="number" name="price" /><br />`
+        <label for="count">Stock Count</label><br />
+        <input type="number" name="count" /><br /><br>
+        <input type="submit" value="Submit" /></a>
+      </form>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

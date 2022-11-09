@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+People
+{% endblock %}
+
+{% block links %}
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<h1>People Page</h1>
+<p>
+  Add a new Customer
+</p>
+
+<i class="fa-solid fa-circle-plus" id="myBtn">PEOPLE</i><br>
+{% for people in peoplelist %}
+{{people}}<br>
+
+<br>
+{% endfor %}
+
+<!-- Model -->
+<div id="myModal" class="modal">`
+  <!-- Model content  -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form action="/addpeoples" method="POST">
+      <label for="name">Name</label><br>
+      <input type="text" name="name"><br>
+      <label for="email">Email</label><br>
+      <input type="email" name="email"><br>
+      <label for="address">Address</label><br>
+      <input type="text" name="address"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+{% endblock %}

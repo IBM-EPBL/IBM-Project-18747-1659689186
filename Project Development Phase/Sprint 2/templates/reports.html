@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Report
+{% endblock %}
+
+{% block links %}
+<link href="{{ url_for('static', filename='css/reports.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1>Reports Page</h1>
+    <p>
+      Welcome to my awesome Report Page.
+    </p>
+{% endblock %}

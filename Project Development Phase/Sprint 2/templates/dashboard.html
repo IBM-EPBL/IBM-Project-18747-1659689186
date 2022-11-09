@@ -1,0 +1,58 @@
+{% extends "layout.html" %} {% block title %} Dashboard {% endblock %} {% block
+links %}
+<link
+  href="{{ url_for('static', filename='css/dashboard.css') }}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<link
+  href="{{ url_for('static', filename='css/model.css') }}"
+  rel="stylesheet"
+  type="text/css"
+/>
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+{% endblock %} {% block content %}
+<p>
+  {{session.get('name')}}
+  <br />
+  {% if session.get('email') != None %} {{session.get('email')}} {% endif %}
+</p>
+<i class="fa-solid fa-circle-plus" id="myBtn">Sales</i>
+{% for sales in salelist %}
+<div>
+  <p>Id : {{sales['ID']}}</p>
+  <p>Email :{{sales['EMAIL']}}</p>
+  <p>Unit :{{sales['UNIT']}}</p>
+  <p>Date :{{sales['DATE']}}</p>
+  <hr />
+  <br />
+</div>
+<br />
+{% endfor %}
+<!-- Model -->
+<div id="myModal" class="modal">
+  `
+  <!-- Model content  -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="sform">
+      <div class="msg">{{msg}}</div>
+      <form method="post" action="/addsales">
+        <label for="id" class="id">ID</label>
+        <input onkeydown="process_key(event)"/>
+        <input type="hidden" id="id" name="id" /><br />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" /><br />
+        <label for="unit" class="unit">Unit</label>
+        <input type="number" id="unit" name="unit" /><br />
+        <label for="date" class="date">Date</label>
+        <input type="date" id="date" name="date" /><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      <pre id="output">
+      </pre>
+    </div>
+  </div>
+</div>
+{% endblock %}

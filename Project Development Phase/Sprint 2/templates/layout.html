@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+     IMS &nbsp; {% block title%}
+    {% endblock %}
+  </title>
+  <!-- Meta Informations -->
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+  <!-- CSS Files -->
+  <link href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='css/header.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css" />
+  <!-- JS Files -->
+  <script src="https://kit.fontawesome.com/3830746d6e.js"></script>
+  <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+  {% block links %}
+  {% endblock %}
+</head>
+
+<body>
+{% include 'header.html' %}
+{% block content %}
+{% endblock %}
+{% include 'footer.html' %}
+</body>
+
+</html>

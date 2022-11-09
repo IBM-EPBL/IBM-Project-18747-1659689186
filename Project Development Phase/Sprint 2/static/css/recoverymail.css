@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dialogbox {
+    text-align: center;
+    justify-content: center;
+    margin-top: 150px;
+    margin-left: 400px;
+    line-height: 35px;
+    border: 1px solid lightgray;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+h2 {
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+    font-weight: normal;
+    font-family: arial;
+    font-size: 20px;
+
+}
+
+.form input {
+    margin-top: 15px;
+    border: 1px solid;
+    border-color: lightgrey;
+    padding: 20px 100px;
+    border-radius: 5px;
+}
+
+.button {
+    margin-top: 35px;
+    padding: 10px 25px;
+    background-color: #3390FF;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 300px;
+    box-shadow: 1px 1px 1px black;
+}
