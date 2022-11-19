@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+{% set active_page = "dashboard" %}
+{% block title %} Dashboard {% endblock %}
+
+{% block links %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet" type="text/css" title="Dashboard">
+
+<!-- Google Pie Chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Pdf -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.js"></script>
+<script>
+  function generate() {
+    var element = document.getElementById('element-to-print');
+    html2pdf(element);
+  }
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+
+  <!-- Report card -->
+  <div class="borderdesign d-flex" id="element-to-print">
+
+
+    <!-- Product Count Card -->
+    <div class="m-5"
+      style="border:1px solid transparent; padding: 5px 15px; border-radius:10px; background: rgba(245, 234, 239, 1); width: fit-content; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);">
+
+      <div class="img">
+        <img src="{{url_for('static', filename='assets/cart.png')}}" class="image" alt="Systemperson" width="100px"
+          height="80px">
+      </div>
+
+      <br>
+      <h6>TOTAL PRODUCT COUNT</h6>
+      <br>
+      <p style=" font-weight: bold; text-align: center; font-size: 30px;color:green; ">{{products_count}}</p>
+    </div> <!-- Product Count Card end -->
+
+
+
+    <!-- product value  -->
+    <div class="m-5"
+      style="border:1px solid transparent; padding: 5px 15px; border-radius:10px; background: rgba(245, 234, 239, 1);  width: fit-content; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);">
+      <div class="img">
+        <img src="{{url_for('static', filename='assets/rupee.png')}}" class="image" alt="Systemperson"
+          style=" width:80px; height:80px">
+      </div>
+
+      <br>
+      <h6>TOTAL PRODUCT VALUE</h6>
+      <br>
+      <p style=" font-weight: bold; text-align: center; font-size: 30px;color:green;">₹ {{products_value}}</p>
+    </div>
+    <!-- product value end -->
+
+    <!-- sold product count -->
+    <div class="m-5"
+      style="border:1px solid transparent; padding: 5px 15px; border-radius:10px; background: rgba(245, 234, 239, 1);  width: fit-content; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);">
+      <div class="img">
+        <img src="{{url_for('static', filename='assets/cart1.png')}}" class="image" alt="Systemperson" width="90px"
+          height="90px">
+      </div>
+      <br>
+      <h6>SOLD PRODUCT COUNT</h6>
+      <p style=" font-weight: bold; text-align: center; font-size: 30px;color:green;">{{sales_count}}</p>
+    </div>
+    <!-- sold product count ends-->
+
+    <!-- sold product value -->
+    <div class="m-5"
+      style="border:1px solid transparent; padding: 5px 15px; border-radius:10px; background: rgba(245, 234, 239, 1);  width: fit-content;  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);">
+      <div class="img">
+        <img src="{{url_for('static', filename='assets/rupee.png')}}" class="image" alt="Systemperson" width="90px"
+          height="90px">
+      </div>
+      <br>
+      <h6>SOLD PRODUCT VALUE</h6>
+      <p style=" font-weight: bold; text-align: center; font-size: 30px;color:green;">₹ {{sales_value}}</p>
+    </div>
+    <!-- sold product value ends -->
+
+  </div>
+
+  <div class="borderdesign down mt-4">
+    <button onclick="generate()" class="downbtn btn" style="color:white">
+      Download Report
+      &nbsp;
+      <i class="fa-solid fa-cloud-arrow-down"></i>
+    </button>
+  </div>
+
+
+
+  <!-- Report card -->
+
+  <div class="d-flex">
+    <!-- {{salesdata}} -->
+    <div id="pie_chart_div" class="piechart"></div>
+    <!-- Combo Chart -->
+    <div id="combo_chart_div" class="combochart"></div>
+  </div>
+
+
+</section>
+
+<script type="text/javascript">
+
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', { 'packages': ['corechart'] });
+
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawChart);
+
+  // Callback that creates and populates a data table,
+  // instantiates the pie chart, passes in the data and
+  // draws it.
+  function drawChart() {
+
+    let products = JSON.parse({{ products_stock | tojson | safe}});
+  let prodname_count_rows = [];
+  for (const [key, value] of Object.entries(products)) {
+    let prodname_count = [];
+    prodname_count.push(value['PRODNAME']);
+    prodname_count.push(value['STOCKCOUNT']);
+    prodname_count_rows.push(prodname_count);
+  }
+
+  // Create the data table.
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Topping');
+  data.addColumn('number', 'Slices');
+  data.addRows(prodname_count_rows);
+
+  // Set chart options
+  var options = {
+    'title': 'Products Availability',
+    'is3D': 'true', 
+    height: 500,
+    width: 500,
+    backgroundColor: '#f5eaef',
+  };
+  // Instantiate and draw our chart, passing in some options.
+  var chart = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
+  chart.draw(data, options);
+  }
+</script>
+<!-- Combo chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', { 'packages': ['corechart'] });
+  google.charts.setOnLoadCallback(drawVisualization);
+  let sales = JSON.parse({{ salesdata | tojson | safe}});
+
+  let saleslist = {};
+  for (const [key, value] of Object.entries(sales)) {
+    if (saleslist[value['DATE']] == undefined) {
+      saleslist[value['DATE']] = [[value['PRODID'], value['UNIT']]];
+    } else {
+      let newlist = [];
+      for (const sales of saleslist[value['DATE']]) {
+        newlist.push(sales);
+      }
+      newlist.push([value['PRODID'], value['UNIT']]);
+      saleslist[value['DATE']] = newlist;
+    }
+  }
+  let productsjson = JSON.parse({{ products_stock | tojson | safe}});
+  let totalproducts = productsjson.length;
+  let productobj = {};
+  for (const [key, value] of Object.entries(productsjson)) {
+    productobj[value['PRODID']] = value['PRODNAME'];
+  }
+  let products = []; // First row
+  products.push("Day");
+  for (const [key, value] of Object.entries(productsjson)) {
+    products.push(value['PRODNAME']);
+  }
+  products.push("Average");
+  
+  let data = new Array();
+
+  for (const [key, value] of Object.entries(saleslist)) {
+    let temp = new Array();
+    temp.push(key); // The date is pushes as first value
+    let total = 0;
+    for (const [prodid, product] of Object.entries(productobj)) {
+      let flag = 0;
+      let count = 0;
+      for (const [key, pair] of Object.entries(value)) {
+        if (pair[0] === prodid) {
+          count = count + pair[1];
+          flag = 1;
+        }
+      }
+      if (flag === 0) {
+        temp.push(0)
+      } else {
+        total = total + count;
+        temp.push(count);
+      }
+    }
+    temp.push(total / totalproducts);// Average added
+
+    data.push(temp);
+  }
+
+  data.sort();
+
+  let finaldata = [];
+  finaldata.push(Object.values(products));
+  for (const [key, value] of Object.entries(data)) {
+    finaldata.push(value);
+  }
+ 
+  function drawVisualization() {
+    // Some raw data (not necessarily accurate)
+    var data = google.visualization.arrayToDataTable(
+      finaldata
+
+    );
+  
+    var options = {
+      title: 'Daily Sales Report',
+      vAxis: { title: 'Sales' },
+      hAxis: { title: 'Day' },
+      seriesType: 'bars',
+      series: { 15: { type: 'line' } },
+      height: 500,
+      width: 500,
+      backgroundColor: '#f5eaef',
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('combo_chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+<!-- Combo charts end -->
+<!-- Google Charts end -->
+{% endblock %}
+<!-- Download Report -->

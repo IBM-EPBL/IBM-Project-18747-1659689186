@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+<!-- Title -->
+{% block title %} Products {% endblock %}
+
+<!-- CSS and JS Links -->
+{% block links %}
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="static/css/products.css">
+
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+{% endblock %}
+
+{% block pagename %}
+  - Products Page
+  <a><i class="fa-solid fa-circle-plus" id="myBtn" ></i></a> 
+  <a href="/products"><i class="fa-solid fa-refresh" aria-hidden="true"></i></a>
+{% endblock %}
+
+  
+<!-- Content -->
+{% block content %}
+
+<section class="product-section">
+<div class="d-flex flex-row flex-wrap justify-content-between">
+{% for product in productlist %}
+          <div class="card">
+              <strong>USERID : </strong>{{product['USERID']}}<br>
+              <!-- <strong>PRODUCT ID : </strong>{{product['PRODID']}}<br> -->
+              </div>
+              <strong>PRODUCT NAME : </strong>{{product['PRODNAME']}}<br>
+              <strong>CATEGORY : </strong>{{product['CATEGORY']}}<br>
+              <strong>BRAND : </strong>{{product['BRAND']}}<br>
+              <strong>DESCRIPTION : </strong>{{product['DESCRIPTION']}}<br>
+              <strong>PRICE : </strong>{{product['PRICE']}}<br>
+              <strong>STOCKCOUNT : </strong>{{product['STOCKCOUNT']}}<br>
+            </p>
+            <!-- <a href="#"><button onclick="readMore(this)">Read More</button></a> -->
+            <span class="prodid">{{product['PRODID']}}</span>
+            <div class="price-container">
+              <div class="price">
+                <span class="label">{{product['PRICE']}}</span>
+              </div>
+            </div>
+          </div> 
+{% endfor %}
+</div>
+
+<!-- Model -->
+<div id="myModal" class="modal">`
+  <!-- Model content  -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="pform">
+      <div class="msg">{{msg}}</div>
+      <form action="/addproducts" method="POST">
+        <br />
+
+        <div class="login-inputbox">
+        <label for="id">UserID:</label><br />
+        <input type="text" name="userid" placeholder="User Id" />
+        </div>
+        <br />
+
+
+        <div class="login-inputbox">
+        <label for="id">ProductId:</label><br />
+        <input type="text" name="prodid"  placeholder="Product Id" />
+        </div>
+        <br />
+        <div class="login-inputbox">
+        <label for="name">Product Name:</label><br />
+        <input type="text" name="prodname"  placeholder="Product Name"/>
+        </div>
+        <br />
+
+        <div class="login-inputbox">
+        <label for="category">Category</label><br />
+        <input type="text" name="category"  placeholder="Category"/>
+        </div>
+        <br />
+
+        <div class="login-inputbox">
+        <label for="brand">Brand</label><br />
+        <input type="text" name="brand"  placeholder="Brand" />
+        </div>
+        <br />
+
+        <div class="login-inputbox">
+        <label for="description">Description</label><br />
+        <input type="text" name="description"  placeholder="Description"/>
+        </div>
+        <br />
+
+        <div class="login-inputbox">
+        <label for="price">Price</label><br />
+        <input type="number" name="price"  placeholder="Price" />
+        </div>
+        <br />
+
+        <div class="login-inputbox">
+        <label for="count">Stock Count</label><br />
+        <input type="number" name="stockcount"  placeholder="stock count"/><br />
+        </div>
+        <br>
+
+        <div class="login-inputbox">
+        <input type="submit" value="Submit" />
+        </div>
+      </a>
+      </form>
+    </div>
+  </div>
+
+</div>
+</section>
+
+{% endblock %}

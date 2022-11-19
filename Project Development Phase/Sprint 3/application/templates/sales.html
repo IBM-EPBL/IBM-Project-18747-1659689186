@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sales
+{% endblock %}
+
+{% block links %}
+<link href="{{ url_for('static', filename='css/sales.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css" />
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+<!-- html qrcode -->
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
+{% endblock %}
+
+{% block pagename %}
+  - Sales Page
+  <a><i class="fa-solid fa-circle-plus" id="myBtn" ></i></a> 
+  <a href="/sales"><i class="fa-solid fa-refresh" aria-hidden="true"></i></a>
+{% endblock %}
+
+{% block content %}
+
+<section>
+  {% for sales in salelist %}
+    <div class="container d-flex flex-wrap align-items-center">
+
+    <div class="m-2 card">
+    <div class="ribbon"><span class="ribbon4">{{sales['USERID']}}</span></div>
+
+    <p>
+
+
+      <!-- <strong>USERID : </strong><br> -->
+    <div class="tag"><i class="fas fa-tags"></i><span>{{sales['PRODID']}}</span><br>
+      <strong>EMAIL : </strong>{{sales['CUSTOMER_EMAIL']}}<br>
+      <strong>UNIT : </strong>{{sales['UNIT']}}<br>
+      <strong>DATE : </strong>{{sales['DATE']}}<br>
+      </p>
+    </div>
+
+
+
+
+  </div>
+
+
+  <br>
+  {% endfor %}
+
+  <!-- Model -->
+  <div id="myModal" class="modal">
+    `
+    <!-- Model content  -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      
+        <!-- Barcode Scanner -->
+
+        <!-- Reader -->
+        <div id="reader" width="600px"></div>
+
+        <!-- Results -->
+        <div id="qr-reader-results"></div>
+
+        <script>
+          function docReady(fn) {
+            // see if DOM is already available
+            if (
+              document.readyState === "complete" ||
+              document.readyState === "interactive"
+            ) {
+              // call on next available tick
+              setTimeout(fn, 1);
+            } else {
+              document.addEventListener("DOMContentLoaded", fn);
+            }
+          }
+
+          docReady(function () {
+            var resultContainer = document.getElementById("qr-reader-results");
+            var lastResult,
+              countResults = 0;
+
+            // function onScanSuccess(decodedText, decodedResult) {
+            function onScanSuccess(qrCodeMessage) {
+              if (qrCodeMessage !== lastResult) {
+                ++countResults;
+                lastResult = qrCodeMessage;
+                resultContainer += `<div>[${countResults}] - ${qrCodeMessage}</div>`;
+                //resultContainer += `[${countResults}] - ${qrCodeMessage}`;
+              }
+              document.write(resultContainer);
+
+              // // handle the scanned code as you like, for example:
+              //console.log(`Code matched = ${decodedText}`, decodedResult);
+              //html5QrcodeScanner.clear();
+            }
+
+            function onScanFailure(error) {
+              // handle scan failure, usually better to ignore and keep scanning.
+              // for example:
+              console.warn(`Code scan error = ${error}`);
+            }
+
+            let html5QrcodeScanner = new Html5QrcodeScanner(
+              "reader",
+              {
+                fps: 10,
+                qrbox: {
+                  width: 250,
+                  height: 250,
+                },
+              },
+              /* verbose= */
+              false
+            );
+            html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+          });
+        </script>
+        <!-- Barcode Scanner ends-->
+      <div class="sform">
+        <div class="msg">{{msg}}</div>
+
+        <form method="post" action="/addsales">
+
+          <div class="login-inputbox">
+            <label for="id" class="id">ID</label><br>
+            <input type="text" id="id" name="userid" placeholder="ID" />
+          </div>
+          <br />
+
+          <div class="login-inputbox">
+            <label for="id" class="id">ProductId</label><br>
+            <input type="text" id="id" name="prodid" placeholder="Product Id" />
+            <br />
+
+            <div class="login-inputbox">
+              <label for="email">Email</label><br>
+              <input type="email" id="email" name="customer_email" placeholder="Email" />
+            </div>
+            <br />
+
+            <div class="login-inputbox">
+              <label for="unit" class="unit">Unit</label><br>
+              <input type="number" id="unit" name="unit" placeholder="Unit" />
+            </div>
+            <br />
+
+            <div class="login-inputbox">
+              <label for="date" class="date">Date</label><br>
+              <input type="date" id="date" name="date" placeholder="Date" /><br />
+            </div>
+            <br />
+
+            <div class="login-inputbox">
+              <input type="submit" value="Submit" />
+            </div>
+        </form>
+        <br /><br />
+        <hr />
+        <br /><br />
+
+      </div>
+    </div>
+  </div>
+  <!-- Model ends-->
+</section>
+  {% endblock %}

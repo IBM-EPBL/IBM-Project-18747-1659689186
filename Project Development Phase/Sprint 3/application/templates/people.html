@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}
+People
+{% endblock %}
+
+{% block links %}
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+<link rel="stylesheet" href="static/css/people.css">
+<!-- <link rel="stylesheet" href="static/css/people.css"> -->
+<script src="https://kit.fontawesome.com/b7354b0308.js" crossorigin="anonymous"></script>
+{% endblock %}s
+
+
+{% block pagename %}
+  - People Page
+  <a><i class="fa-solid fa-circle-plus" id="myBtn" ></i></a> 
+  <a href="/people"><i class="fa-solid fa-refresh" aria-hidden="true"></i></a>
+{% endblock %}
+
+{% block content %}
+
+
+{% for people in peoplelist %}
+
+<section>
+
+<div class="card">
+  
+  <div class="userid"> 
+ 
+     
+      {{people['USERID']}}
+    </strong>
+  </div>
+
+  <div class="name">
+    <strong>
+      <i class="fa-solid fa-user"></i>
+      {{people['CUSTOMERNAME']}}
+    </strong>
+  </div>
+
+  <div class="email">
+    <strong>
+      <i class="fa-solid fa-envelope"></i>
+      {{people['CUSTOMER_EMAIL']}}
+    </strong>
+  </div>
+
+  <div class="address">
+    <strong>
+      <i class="fa-solid fa-house"></i>
+      {{people['ADDRESS']}}
+    </strong>
+  </div>
+
+  <span class="userid">   <strong> <i class="fa-solid  fa-id-card"></i> {{people['USERID']}}</strong></span>
+</div>
+
+
+{% endfor %}
+
+
+
+
+
+
+
+
+<!-- Model -->
+<div id="myModal" class="modal">`
+  <!-- Model content  -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form action="/addpeoples" method="POST" class="login-form">
+      <h2>Add a customer</h2>
+			<div class="login-inputbox">
+        <input type="text" name="userid" placeholder="Userid">
+      </div>
+			<div class="login-inputbox">
+        <input type="text" name="customername" placeholder="CustomerName">
+      </div>
+			<div class="login-inputbox">
+        <input type="email" name="customeremail" placeholder="Customeremail">
+      </div>
+			<div class="login-inputbox">
+        <input type="text" name="address" placeholder="Address">
+      </div>
+			<div class="login-inputbox">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+</section>
+{% endblock %}

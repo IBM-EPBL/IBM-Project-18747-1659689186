@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IMS</title>
+    <!-- css links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/entry.css')}}">
+    <!-- js links-->
+    <script src="https://kit.fontawesome.com/3830746d6e.js"></script>
+    <script src="{{ url_for('static', filename='js/entry.js') }}"></script>
+</head>
+
+<body>
+    <!-- Sign in and Sign up  -->
+    <div class="container">
+        <!-- Container -->
+        <div class="forms-container">
+            <!-- Form Container -->
+            <div class="signin-signup">
+                <!-- Signin & Signup -->
+                <!-- Signin Form -->
+
+                <form action="/login" method="POST" class="sign-in-form" autocomplete="off">
+                    <h2 class="title">Sign in</h2>
+                    {% if smsg %}
+                    <!-- Success Alert -->
+                    <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                        {{smsg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+
+                    {% if msg %}
+                    <!-- Error Alert -->
+                    <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show">
+                        {{msg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+
+                    {% if imsg %}
+                    <!-- Info Alert -->
+                    <div class="alert alert-info alert-dismissible d-flex align-items-center fade show">
+                        {{imsg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+
+                    {% if wmsg %}
+                    <!-- Warning Alert -->
+                    <div class="alert alert-warning alert-dismissible d-flex align-items-center fade show">
+                        {{wmsg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+
+
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="email" placeholder="User ID" name="userid" autocomplete="off" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-eye field-icon toggle-password" id="togglePassword"
+                            onclick="myfunction()"></i>
+                        <input type="password" placeholder="Password" name="password" id="password" autocomplete="off"
+                            required>
+                    </div>
+                    <div class="forgetpswd">
+                        <a href="{{url_for('recoverymail')}}" style="color:#8b008b">Forgot Password!</a>
+                    </div>
+                    <input type="submit" value="Login" class="btn solid">
+                    <a href="{{url_for('gentry')}}">
+                        <button type="button" class="login-with-google-btn">
+                            Sign in with Google
+                        </button>
+                    </a>
+                </form>
+
+                <!-- Signup form  -->
+                <form autocomplete="off" action="/adduser" onsubmit="return validpswd()" method="POST" class="sign-up-form">
+                    <h2 class="title">Sign Up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="username" placeholder="Username" autocomplete="off" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" name="userid" placeholder="Email" autocomplete="off" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-eye field-icon toggle-password" id="togglePassword1"
+                            onclick="myfunction1()"></i>
+                        <input type="password" id="password1" name="password" placeholder="Password" autocomplete="off"
+                            required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-eye field-icon toggle-password" id="togglePassword2"
+                            onclick="myfunction1()"></i>
+                        <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password"
+                            autocomplete="off" required>
+                    </div>
+                    <input type="submit" class="btn" value="Sign up">
+                </form>
+            </div>
+            <!-- Signin & Signup end -->
+        </div>
+        <!-- Form Container end -->
+        <div class="panels-container">
+            <!-- Panel Container -->
+            <div class="panel left-panel">
+                <!-- Left Panel -->
+                <div class="content">
+                    <h3>Login</h3>
+                    <p>Inventory Management System</p>
+                    <button class="btn transparent" id="sign-up-btn">Sign up</button>
+                </div>
+                <img src="{{url_for('static', filename='assets/ims5.png')}}" class="image" alt="Systemperson">
+            </div>
+            <!-- Left Panel end -->
+            <div class="panel right-panel">
+                <!-- Right Panel -->
+                <div class="content">
+                    <h2>New User</h2>
+                    <p>
+                        Welcome to your
+                        <br>
+                        Inventory Management System
+                    </p>
+                    <button class="btn transparent" id="sign-in-btn">Sign in</button>
+                </div>
+                <img src="{{ url_for('static', filename='assets/ims2.png') }}" class="image" alt="Systemperson">
+            </div>
+            <!-- Right Panel end -->
+        </div>
+        <!-- Panel Container end -->
+    </div>
+    <!-- Container -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

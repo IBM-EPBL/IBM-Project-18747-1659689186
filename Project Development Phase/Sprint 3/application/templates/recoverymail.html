@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{{ url_for('static', filename='css/recoverymail.css') }}" rel="stylesheet" type="text/css" />
+    <!-- <link rel="icon" type="image/x-icon" href="/images/favicon (1).ico" /> -->
+    <title>Gmail</title>
+</head>
+
+<body>
+    <div class="dialogbox">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Google_2011_logo.png/800px-Google_2011_logo.png?20130708141330" height="30px" width="70px" />
+        <h2>Find your email</h2>
+        <div class="content">
+            <p>Enter your phone number or recovery email</p>
+        </div>
+        <div class="form">
+            <form action = "/sendpassword" method="POST">
+                <input type="email" placeholder="Enter your Email" name="email" class="emailbox" />
+                <br />
+                <input type="submit" class="button" value="Send"/>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

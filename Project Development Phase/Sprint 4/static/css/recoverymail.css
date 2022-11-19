@@ -1,0 +1,83 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    background-image: linear-gradient(to right top, #f5eaef  , #f5eaef ,#f5eaef  , #f5eaef  ,#f5eaef  );
+    color:purple;
+}
+
+.form-container {
+    display: flex;
+    height: 98vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center; 
+}
+
+.form-container .form-wrap {
+    letter-spacing: 1px;
+    padding:15px;
+    background: rgba(245, 234, 239, 1);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    width: 30%;
+    border-radius: 30px;
+}
+
+.form-container .form-wrap h2 {
+    text-align: center;
+    margin: 0px 0px 20px;
+    font-size: 19px;
+}
+
+.form-container .form-wrap .form-box {
+    margin: 0px 0px 15px;
+}
+
+.form-container .form-wrap .form-box input[type="text"]{
+    margin-top: 10px;
+    width: 100%;
+    background-color: white;
+    height: 55px;
+    border-radius: 55px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: none;
+}
+
+.form-container .form-wrap .form-submit {
+    display: flex;
+    justify-content: center;
+    line-height:40px;
+    margin:20px;
+}
+
+
+.form-container .form-wrap .form-submit input[type="submit"] {
+    margin: 20px;
+    padding: 15px 30px;
+    background-color: #653780;
+    color: white;
+    border-radius: 35px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgb(86, 30, 97);
+    text-transform: uppercase;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    width: 150px;
+    transition: 0.5s;
+}
+
+
+
+ 

@@ -1,0 +1,306 @@
+{% extends "layout.html" %}
+{% set active_page = "sales" %}
+{% block title %} Sales {% endblock %}
+ {% block links %}
+<link href="{{ url_for('static', filename='css/salesform.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ url_for('static', filename='css/sales.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+<!-- html qrcode -->
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+{% endblock %} {% block pagename %} - Sales Page
+<a>
+    <i class="fa-solid fa-circle-plus" id="myBtn"></i>
+</a>
+{% endblock %} {% block content %}
+<section class="product-section">
+    {{msg}}
+    {% if salelist %}
+
+    <div class="container p-5 m-5">
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Date</div>
+                <div class="col col-2">Customer Email</div>
+                <div class="col col-3">Product ID</div>
+                <div class="col col-4">Unit</div>
+            </li>
+            {% for sales in salelist %}
+
+            <li class="table-row">
+                <div class="col col-1">{{sales['DATE']}}</div>
+                <div class="col col-2">{{sales['CUSTOMER_EMAIL']}} </div>
+                <div class="col col-3">{{sales['PRODID']}}</div>
+                <div class="col col-4">{{sales['UNIT']}}</div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if not salelist %}
+
+    <div class="d-flex flex-column">
+
+        <h3 style="color:#653780;  text-align: center;">You are not made any sales in your inventory yet</h3>
+
+        <img class="justify-content-center align-self-center"
+            src="{{ url_for('static', filename='assets/add-to-cart.png')}}" width="200px" height="200px"
+            alt="Add Products" />
+        <button id="myBtn1" style="color:#653780; text-align: center; border:none; background-color:transparent;">
+            <h4>To add a Sales Click here</h4>
+        </button>
+    </div>
+
+    {% endif %}
+
+</section>
+
+
+<!-- People page model -->
+<!-- Model -->
+<div id="myModal" class="modal">
+    <!-- Model content  -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+                    <div class="card px-5 pt-5 pb-5 mt-5 mb-5">
+                        <h2 id="heading">Add New Product Sale</h2>
+                        <form id="msform" method="POST" action="/addsales">
+                            <!-- progressbar -->
+                            <ul id="progressbar" class="heading">
+                                <li class="active" id="customer">
+                                    <strong>Customer</strong>
+                                </li>
+                                <li id="sale">
+                                    <strong>Product Sales</strong>
+                                </li>
+                                <li id="confirm">
+                                    <strong>Finish</strong>
+                                </li>
+                            </ul>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <br>
+                            <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="fs-title">Customer Details</h2>
+                                        </div>
+                                        <div class="col-5">
+                                            <h2 class="steps">Step 1 - 3</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <label class="fieldlabels" for="floatingInput">Customer Name</label>
+                                            <input type="text" class="form-control" name="customername"
+                                                placeholder="Customer name" required>
+                                        </div>
+                                        <div class="col">
+                                            <label class="fieldlabels" for="floatingInput">Email</label>
+                                            <input type="email" class="form-control" name="customeremail"
+                                                placeholder="Email" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="fieldlabels" for="inputAddress"
+                                                class="form-label">Address</label>
+                                            <input type="text" class="form-control" name="address" id="inputAddress"
+                                                placeholder="District Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Next">
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="fs-title">Product Sales</h2>
+                                        </div>
+                                        <div class="col-5">
+                                            <h2 class="steps">Step 2 - 3</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row g-1">
+                                        <div class="col">
+                                            <label for="floatingInput">Product Id</label>
+                                            <input type="text" class="form-control" name="prodid"
+                                                placeholder="Product id" required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="floatingInput">Unit</label>
+                                            <input type="number" class="form-control" name="unit" placeholder="Unit"
+                                                required>
+                                        </div>
+                                        <div class="col">
+                                            <label for="floatingInput">Date</label>
+                                            <input type="date" class="form-control" name="date" placeholder="Date"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Next">
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous">
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="fs-title">Finish:</h2>
+                                        </div>
+                                        <div class="col-5">
+                                            <h2 class="steps">Step 3 - 3</h2>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <h2 class="purple-text text-center">
+                                        <strong>SUCCESS !</strong>
+                                    </h2>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="https://i.imgur.com/GwStPmg.png" class="fit-image">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 text-center">
+                                            <h5 class="purple-text text-center">You Have Successfully Added Product
+                                                Sales Information</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" name="next" id="submit-btn" class="action-button"
+                                    value="Submit">
+                                <input type="button" name="previous" class="previous action-button-previous"
+                                    value="Previous">
+
+                            </fieldset>
+                            <!-- <fieldset>
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <h2 class="fs-title">Finish:</h2>
+                                        </div>
+                                        <div class="col-5">
+                                            <h2 class="steps">Step 4 - 4</h2>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <h2 class="purple-text text-center">
+                                        <strong>SUCCESS !</strong>
+                                    </h2>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-3">
+                                            <img src="https://i.imgur.com/GwStPmg.png" class="fit-image">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <div class="col-7 text-center">
+                                            <h5 class="purple-text text-center">You Have Successfully Added Product
+                                                Sales Information</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Model-centent end -->
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var opacity;
+        var current = 1;
+        var steps = $("fieldset").length;
+
+        setProgressBar(current);
+
+        $(".next").click(function () {
+
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+
+            //Add Class Active
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    next_fs.css({ 'opacity': opacity });
+                },
+                duration: 500
+            });
+            setProgressBar(++current);
+        });
+
+        $(".previous").click(function () {
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //Remove class active
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+
+            //hide the current fieldset with style
+            current_fs.animate({ opacity: 0 }, {
+                step: function (now) {
+                    // for making fielset appear animation
+                    opacity = 1 - now;
+
+                    current_fs.css({
+                        'display': 'none',
+                        'position': 'relative'
+                    });
+                    previous_fs.css({ 'opacity': opacity });
+                },
+                duration: 500
+            });
+            setProgressBar(--current);
+        });
+
+        function setProgressBar(curStep) {
+            var percent = parseFloat(100 / steps) * curStep;
+            percent = percent.toFixed();
+            $(".progress-bar")
+                .css("width", percent + "%")
+        }
+    });
+</script>
+
+</section>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+<!-- Title -->
+{% block title %}
+New Product
+{% endblock %}
+<!-- CSS and JS Links -->
+{% block links %}
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css">
+<!-- <script src="{{ url_for('static', filename='js/model.js') }}"></script> -->
+{% endblock %}
+{% block pagename %}
+- New Product Page
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class=" modal-content d-flex align-items-center justify-content-center" style="margin-top:50px;">
+
+
+    <form action="/addproducts" method="POST">
+        <a href="/products" style="color:#653780"><i class="fa-solid fa-arrow-left"></i> &nbsp;Back to Products</a>
+        <br>
+
+        <div class="row g-3 mt-4">
+            <div class="col-md-6">
+                <label for="id" style="color:#653780">ProductId:</label>
+                <br>
+                <input type="text" class="form-control" name="prodid" id="prodid" placeholder="Product Id"
+                    value="{{product['PRODID']}}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="name" style="color:#653780">Product Name:</label>
+                <br>
+                <input type="text" class="form-control" name="prodname" placeholder="Product Name"
+                    value="{{product['PRODNAME']}}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="name" style="color:#653780">Category:</label>
+                <br>
+                <input type="text" class="form-control" name="category" placeholder="Enter the Category name"
+                    value="{{product['CATEGORY']}}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="name" style="color:#653780">Brand:</label>
+                <br>
+                <input type="text" class="form-control" name="brand" placeholder="Enter the brand name"
+                    value="{{product['BRAND']}}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="name" style="color:#653780">Price:</label>
+                <br>
+                <input type="number" class="form-control" name="price" placeholder="Enter the price of product"
+                    value="{{product['PRICE']}}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="name" style="color:#653780">StockCount:</label>
+                <br>
+                <input type="number" class="form-control" name="stockcount" placeholder="Enter the stockcount"
+                    value="{{product['STOCKCOUNT']}}" required>
+            </div><br><br>
+
+            <div class="col" style="margin-bottom:10px;margin-left:400px;margin-top:50px">
+                <input type="submit" class="btn btn-primary" value="Submit" required>
+            </div>
+
+        </div>
+    </form>
+    <br>
+
+</div>
+{% endblock %}

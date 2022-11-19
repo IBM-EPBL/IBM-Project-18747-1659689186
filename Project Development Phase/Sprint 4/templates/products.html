@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% set active_page = "products" %}
+<!-- Title -->
+{% block title %} Products {% endblock %}
+<!-- CSS and JS Links -->
+{% block links %}
+<link rel="stylesheet" href="static/css/products.css">
+{% endblock %}
+
+{% block pagename %}
+- Products Page
+<a>
+  <a href="/newproduct" style="color:#653780"><i class="fa-solid fa-circle-plus"></i></a>
+</a>
+{% endblock %}
+<!-- Content -->
+{% block content %}
+<section class="product-section">
+  <div class="d-flex flex-row flex-wrap justify-content-between p-5">
+    {% if productlist %}
+
+    {% for product in productlist %}
+    <!-- 4rh card design -->
+    <div class="listing-card-cont details-card-cont details-card-cont premium m-3">
+
+      <span class="premium-tag">
+        {{product['PRODID']}}&nbsp;
+      </span>
+      <a href="/delete/{{product['PRODID']}}/{{product['USERID']}}">
+        <span class="delete-tag">
+
+          <h3>
+            <i class="fa-regular fa-trash-can"></i>
+          </h3>
+
+        </span>
+      </a>
+      <div class="article-thumb-text-container">
+        <h3 class="article-thumb-heading">{{product['PRODNAME']}}
+          <a href="/edit/{{product['PRODID']}}/{{product['USERID']}}">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </a>
+        </h3>
+        <ul class="article-thumb-info">
+          <li>{{product['BRAND']}}</li>
+          <li> <strong>&#8377;
+              {{product['PRICE']}}</strong></li>
+          <li class="count"> {{product['STOCKCOUNT']}}</li>
+          <li> {{product['CATEGORY']}}</li>
+        </ul>
+
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+  {% if not productlist %}
+  <div class="d-flex flex-column">
+
+    <h3 style="color:#653780;  text-align: center;">You are not added any Products in your inventory yet</h3>
+
+    <img class="justify-content-center align-self-center" src="{{ url_for('static', filename='assets/add.png')}}"
+      width="200px" height="200px" alt="Add Products" />
+    <a href="/newproduct" style="color:#653780; text-align: center;">
+      <h4>To add a Product Click here</h4>
+    </a>
+  </div>
+
+  {% endif %}
+  <!-- Success Alert -->
+  <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+    {{msg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+
+</section>
+{% endblock %}

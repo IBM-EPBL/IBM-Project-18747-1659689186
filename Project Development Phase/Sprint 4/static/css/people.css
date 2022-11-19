@@ -1,0 +1,30 @@
+
+body{
+  background-color:rgba(245, 234, 239, 1);
+
+}
+
+.seperate{
+  /* border:1px solid black; */
+  margin-top:20px;
+  line-height:30px;
+  margin-left:20px;
+  width:250px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  background-color: #f5eaef;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);  
+  font-weight: bold;
+}
+
+.seperate i {
+  color: #653780;
+}
+.seperate:hover{
+  cursor:pointer;
+ 
+}
+
+

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% set active_page = "people" %}
+{% block title %} People {% endblock %} {% block
+links %}
+<link href="{{ url_for('static', filename='css/model.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
+<script src="{{ url_for('static', filename='js/model.js') }}"></script>
+<link rel="stylesheet" href="static/css/people.css" title="People Page" />
+<script src="https://kit.fontawesome.com/b7354b0308.js" crossorigin="anonymous"></script>
+{% endblock %} {% block pagename %} - People Page{% endblock %} {% block content %}
+
+<section class="d-flex flex-row flex-wrap justify-content-evenly">
+  {% if peoplelist %}
+  {% for people in peoplelist %}
+
+  <!-- <div class="card"> -->
+  <div class="seperate">
+
+
+    <i class="fa-solid fa-user" style="padding-right: 10px;"></i>
+    {{people['CUSTOMERNAME']}}
+    <br>
+
+
+    <i class="fa-solid fa-envelope" style="padding-right: 10px;"></i>
+    {{people['CUSTOMER_EMAIL']}}
+    <br>
+
+    <i class="fa-solid fa-house" style="padding-right: 10px;"></i>
+    {{people['ADDRESS']}}
+
+  </div>
+  {% endfor %}
+  {% endif %}
+
+
+  {% if not peoplelist %}
+  <div class="d-flex flex-column">
+
+    <h3 style="color:#653780;  text-align: center;">You don't have any Customer in your inventory yet</h3>
+
+    <img class="justify-content-center align-self-center" src="{{ url_for('static', filename='assets/add-user.png')}}"
+      width="200px" height="200px" alt="Add Products" />
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    IMS &nbsp; {% block title%}
+    {% endblock %}
+  </title>
+
+  <!-- Meta Informations -->
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+
+  <!-- CSS Files -->
+  <link href="{{ url_for('static', filename='css/layout.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet" type="text/css" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- JS Files -->
+  <script src="https://kit.fontawesome.com/3830746d6e.js"></script>
+  <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+
+
+  <!-- For Pop Over -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Page links -->
+  {% block links %}
+  {% endblock %}
+</head>
+
+<body>
+
+  <div class="wrapper shrink">
+
+    <div class="top_navbar">
+      <!-- TopNavbar -->
+
+      <div class="hamburger" id="hamburger">
+        <!-- Hamburger -->
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+      </div> <!-- Hamburger end -->
+
+      <div class="top_menu">
+        <!-- Top Menu -->
+
+        <div class="logo">
+          <!-- Logo -->
+          IMS
+          {% block pagename %}
+          {% endblock %}
+        </div> <!-- Logo end -->
+
+        <ul>
+          <li>
+            <!-- Expand -->
+            <a href="#" onclick="expand()" id="expand">
+              <i class="fas fa-expand"></i>
+            </a>
+          </li> <!-- Expand end -->
+
+
+          <li>
+            <!-- Profile -->
+            <a href="#" title="{{session['username']}} " data-toggle="popover" data-content="{{session['userid']}}"
+              data-placement="bottom">
+              <i class="fas fa-user"></i>
+            </a>
+          </li> <!-- Profile end -->
+
+          <li>
+            <!-- Logout -->
+            <a href="/exit">
+              <i class="fas fa-right-from-bracket"></i>
+            </a>
+          </li> <!-- Logout end -->
+        </ul>
+
+      </div> <!-- Top Menu end -->
+
+    </div> <!-- TopNavbar end -->
+
+    <div class="sidebar">
+      <!-- Sidebar -->
+      <ul>
+        <li>
+          <!-- Dashboard -->
+          <a href="/dashboard" class="{{ 'active' if active_page == 'dashboard' else '' }}">
+            <span class="icon"><i class="fas fa-gauge"></i></span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li> <!-- Dashboard end -->
+
+        <li>
+          <!-- Products -->
+          <a href="/products" class="{{ 'active' if active_page == 'products' else '' }}">
+            <span class="icon"><i class="fas fa-boxes-stacked"></i></span>
+            <span class="title">Products</span>
+          </a>
+        </li> <!-- Products end -->
+
+        <li>
+          <!--People -->
+          <a href="/people" class="{{ 'active' if active_page == 'people' else '' }}">
+            <span class="icon"><i class="fas fa-people-group"></i></span>
+            <span class="title">People</span>
+          </a>
+        </li> <!-- People end -->
+
+        <li>
+          <!-- Sales -->
+          <a href="/sales" class="{{ 'active' if active_page == 'sales' else '' }}">
+            <span class="icon"><i class="fas fa-book"></i></span>
+            <span class="title">Sales</span>
+          </a>
+        </li> <!-- Sales end -->
+      </ul>
+    </div> <!-- Sidebar end -->
+
+    <div class="main_container">
+      <!-- MainContainer -->
+      {% block content %}
+      {% endblock %}
+      <!-- Chatbot -->
+      <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "7d3b4287-e4cb-4a68-ac40-555a2fdd5119", // The ID of this integration.
+          region: "jp-tok", // The region your integration is hosted in.
+          serviceInstanceID: "9c8126ff-79ba-4a0f-93d9-43cd67c04b23", // The ID of your service instance.
+          onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+          const t = document.createElement('script');
+          t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+      </script>
+      <!-- Chatbot ends -->
+      {% include 'footer.html' %}
+    </div> <!-- MainContainer end -->
+  </div> <!-- Wrapper end -->
+
+
+  <script>
+    $("#hamburger").click(function () {
+      $(".wrapper").toggleClass("shrink");
+    });
+  </script>
+
+
+  <script>
+    $(document).ready(function () {
+      $('[data-toggle="popover"]').popover();
+    });
+  </script>
+</body>
+
+</html>
