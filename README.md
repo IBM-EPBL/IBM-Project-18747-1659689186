@@ -80,3 +80,7 @@ Once retailers successfully log in to the application they can update their inve
 | Veerammal S     | [Click Here!](https://github.com/IBM-EPBL/IBM-Project-18747-1659689186/tree/main/Assignments/Team%20Member%202)  
 | Venkateshkumar B  | [Click Here!](https://github.com/IBM-EPBL/IBM-Project-18747-1659689186/tree/main/Assignments/Team%20Member%203)  
 | Vimalraj D |[Click Here!](https://github.com/IBM-EPBL/IBM-Project-18747-1659689186/tree/main/Assignments/Team%20Member%204)  
+
+
+## **DEMO VIDEO LINK**
+https://youtu.be/GkEuq4urnlk
