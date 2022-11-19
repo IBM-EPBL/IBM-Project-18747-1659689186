@@ -83,4 +83,4 @@ Once retailers successfully log in to the application they can update their inve
 
 
 ## **DEMO VIDEO LINK**
-https://youtu.be/GkEuq4urnlk
+https://youtu.be/0tjnhbHuaA8
