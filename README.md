@@ -61,6 +61,10 @@ Once retailers successfully log in to the application they can update their inve
     - [x] Sprint Delivery plan
 - Project Development Phase
     - Sprint 1
+    - Sprint 2
+    - Sprint 3
+    - Sprint 4 
+
 # **📋ASSIGNMENT COMPLETED:**
   - [x] Assignment 1  
   - [x] Assignment 2  
