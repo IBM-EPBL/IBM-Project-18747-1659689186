@@ -84,3 +84,6 @@ Once retailers successfully log in to the application they can update their inve
 
 ## **DEMO VIDEO LINK**
 https://youtu.be/0tjnhbHuaA8
+
+## **DEPLOYMENT LINK**
+http://169.51.195.113:32075/
